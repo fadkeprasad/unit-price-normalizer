@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Injected badge fixture</title>
+  <link rel="stylesheet" href="../content.css">
+  <style>
+    body { background: #f3f4f6; font: 15px system-ui, sans-serif; margin: 0; padding: 40px; }
+    h1 { margin: 0 auto 24px; max-width: 1000px; }
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); margin: auto; max-width: 1000px; }
+    .product-card { background: white; border-radius: 14px; box-shadow: 0 5px 18px #00000010; padding: 22px; }
+    .product-card h2 { font-size: 17px; min-height: 44px; }
+    .price { color: #111827; font-size: 25px; font-weight: 800; }
+    p { color: #6b7280; }
+  </style>
+</head>
+<body>
+  <h1>Greek yogurt comparison</h1>
+  <div class="grid">
+    <article class="product-card"><h2>Plain Greek Yogurt, 32 oz tub</h2><div class="price">$5.98</div><p>Family size</p></article>
+    <article class="product-card"><h2>Organic Greek Yogurt, 1 kg</h2><div class="price">$7.25</div><p>Plain, unsweetened</p></article>
+    <article class="product-card"><h2>Greek Yogurt Cups, 6 x 5.3 oz</h2><div class="price">$6.49</div><p>Multipack</p></article>
+  </div>
+  <script>
+    globalThis.chrome = {
+      storage: {
+        sync: { get(defaults, callback) { callback(defaults); } },
+        onChanged: { addListener() {} }
+      },
+      runtime: { onMessage: { addListener() {} } }
+    };
+  </script>
+  <script src="../normalizer.js"></script>
+  <script src="../content.js"></script>
+</body>
+</html>

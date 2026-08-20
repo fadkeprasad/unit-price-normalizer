@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unit Price Normalizer</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="logo" aria-hidden="true">÷</div>
+        <div>
+          <h1>Unit Price</h1>
+          <p>Normalizer</p>
+        </div>
+        <label class="switch" title="Enable on shopping pages">
+          <input id="enabled" type="checkbox">
+          <span></span>
+        </label>
+      </header>
+
+      <section class="preview" aria-label="Example normalized prices">
+        <div><span>Mass</span><strong>$0.0125/g</strong></div>
+        <div><span>Liquid</span><strong>$0.0038/ml</strong></div>
+      </section>
+
+      <section class="settings">
+        <label class="row" for="highlightBest">
+          <span><b>Highlight best value</b><small>Marks the lowest comparable price</small></span>
+          <input id="highlightBest" type="checkbox">
+        </label>
+        <label class="select-row" for="decimals">
+          <span><b>Decimal places</b><small>Smart keeps small values readable</small></span>
+          <select id="decimals">
+            <option value="smart">Smart</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="status" aria-live="polite">
+        <strong id="statusTitle">Checking this page…</strong>
+        <span id="statusDetail">Looking for product sizes and prices</span>
+      </section>
+
+      <button id="rescan" type="button">Scan page again</button>
+      <p class="footnote">Works when a product card includes both its price and package size.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
