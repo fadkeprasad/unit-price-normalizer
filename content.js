@@ -21,6 +21,7 @@
   ];
   const PRICE_SELECTORS = [
     ".a-price:not(.a-text-price)",
+    "[data-testid='unified-global-product-price']",
     "[data-automation-id='product-price']",
     "[data-testid='price-wrap']",
     "[itemprop='price']",

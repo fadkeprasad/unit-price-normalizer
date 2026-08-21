@@ -93,6 +93,11 @@
     match = value.match(trailingPack);
     if (match) return quantityFromMatch(match[1], match[2], Number(match[3]), match[0]);
 
+    // Walmart-style "5.3 oz 4PK" or "5.3 oz cups, 6 count".
+    const compactTrailingPack = new RegExp(NUMBER + "\\s*" + UNIT + "(?:\\s*(?:each|bottles?|cups?|cans?|tubs?))?\\s*[,]?\\s*(\\d{1,3})\\s*(?:pk|pack|count|ct)\\b", "i");
+    match = value.match(compactTrailingPack);
+    if (match) return quantityFromMatch(match[1], match[2], Number(match[3]), match[0]);
+
     // "pack of 6, 5.3 oz each".
     const packOf = new RegExp("\\b(?:pack|case)\\s+of\\s+(\\d{1,3})\\D{0,20}?" + NUMBER + "\\s*" + UNIT + "\\b", "i");
     match = value.match(packOf);

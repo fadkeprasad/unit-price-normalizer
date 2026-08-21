@@ -24,6 +24,8 @@ test("multiplies multi-pack quantities", () => {
   assert.ok(Math.abs(parseQuantity("Greek Yogurt 6 x 5.3 oz cups").baseAmount - 901.514835) < 0.001);
   assert.equal(parseQuantity("Water 12 pack 500 ml bottles").baseAmount, 6000);
   assert.ok(Math.abs(parseQuantity("Pack of 4, 8 oz each").baseAmount - 907.18474) < 0.001);
+  assert.ok(Math.abs(parseQuantity("Greek Yogurt 5.3 oz 4PK").baseAmount - 601.00989) < 0.001);
+  assert.ok(Math.abs(parseQuantity("Greek Yogurt 5.3 oz Cups, 6 Count").baseAmount - 901.514835) < 0.001);
 });
 
 test("normalizes and formats unit price", () => {
