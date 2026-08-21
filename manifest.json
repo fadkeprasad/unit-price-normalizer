@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Unit Price Normalizer",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Compare product prices using a consistent price per gram or milliliter.",
   "icons": {
     "16": "icons/icon16.png",

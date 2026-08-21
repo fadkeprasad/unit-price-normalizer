@@ -125,6 +125,16 @@
 
   function formatUnitPrice(value, unit, decimals) {
     if (!Number.isFinite(value)) return "";
+
+    // Values below one cent are easier to compare as fractional cents.
+    if (value < 0.01) {
+      const cents = value * 100;
+      const centDecimals = decimals === "smart"
+        ? (cents >= 1 ? 2 : cents >= 0.1 ? 3 : cents >= 0.01 ? 4 : 5)
+        : Math.max(2, Math.min(6, Number(decimals) || 4));
+      return `${cents.toFixed(centDecimals)}¢/${unit}`;
+    }
+
     const selectedDecimals = decimals === "smart"
       ? (value >= 1 ? 2 : value >= 0.1 ? 3 : value >= 0.01 ? 4 : 5)
       : Math.max(2, Math.min(6, Number(decimals) || 4));

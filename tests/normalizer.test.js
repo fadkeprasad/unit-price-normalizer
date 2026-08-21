@@ -32,8 +32,14 @@ test("normalizes and formats unit price", () => {
   const quantity = parseQuantity("Greek Yogurt 32 oz");
   const result = normalize(5.98, quantity);
   assert.ok(Math.abs(result.value - 0.006591819) < 0.000001);
-  assert.equal(formatUnitPrice(result.value, result.unit, "smart"), "$0.00659/g");
-  assert.equal(formatUnitPrice(result.value, result.unit, 4), "$0.0066/g");
+  assert.equal(formatUnitPrice(result.value, result.unit, "smart"), "0.659¢/g");
+  assert.equal(formatUnitPrice(result.value, result.unit, 4), "0.6592¢/g");
+});
+
+test("uses cents only below the one-cent boundary", () => {
+  assert.equal(formatUnitPrice(0.00999, "g", "smart"), "0.999¢/g");
+  assert.equal(formatUnitPrice(0.01, "g", "smart"), "$0.0100/g");
+  assert.equal(formatUnitPrice(0.0038, "ml", "smart"), "0.380¢/ml");
 });
 
 test("rejects unsupported counts and invalid inputs", () => {
